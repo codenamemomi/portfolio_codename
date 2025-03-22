@@ -10,25 +10,20 @@ const App = () => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    const timer = setTimeout(() => setLoading(false), 3000);
-    return () => clearTimeout(timer);
-  }, []);
+    console.log("App re-rendered. Loading:", loading);
+  }, [loading]);
 
-  return (
-    <>
-      {loading ? (
-        <SplashScreen />
-      ) : (
-        <Router>
-          <Navbar />
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/about" element={<About />} />
-            <Route path="/contact" element={<Contact />} />
-          </Routes>
-        </Router>
-      )}
-    </>
+  return loading ? (
+    <SplashScreen onFinish={() => setLoading(false)} />
+  ) : (
+    <Router>
+      <Navbar />
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/about" element={<About />} />
+        <Route path="/contact" element={<Contact />} />
+      </Routes>
+    </Router>
   );
 };
 

@@ -4,7 +4,7 @@ import styles from "./SplashScreen.module.css";
 const SplashScreen = ({ onFinish }) => {
   useEffect(() => {
     const timer = setTimeout(() => {
-      onFinish(); // Hide splash after 3 seconds
+      onFinish(); // Hide splash screen after animation
     }, 3000);
 
     return () => clearTimeout(timer);
@@ -12,8 +12,7 @@ const SplashScreen = ({ onFinish }) => {
 
   return (
     <div className={styles.splashScreen}>
-      <img src="/codename.ico" alt="Logo" className={styles.logo} />
-      <h1 className={styles.name}>HEY USER!</h1>
+      <h1 className={styles.name}>WELCOME to CODENAME</h1>
     </div>
   );
 };

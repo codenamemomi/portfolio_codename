@@ -1,0 +1,134 @@
+/* General Hero Styling */
+.hero {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  background: linear-gradient(135deg, #000000, #222222);
+  color: white;
+  overflow: hidden;
+  position: relative;
+  z-index: 2
+}
+
+/* Content Animation */
+.content {
+  opacity: 0;
+  transform: translateY(50px);
+  animation: fadeInUp 1s ease-out forwards;
+}
+
+/* Animated Title */
+.title {
+  font-size: 3rem;
+  font-weight: bold;
+  letter-spacing: 2px;
+  opacity: 0;
+  transform: translateY(-20px);
+  animation: slideIn 1.5s ease-out forwards;
+}
+
+/* Highlighted Name */
+.title span {
+  color: silver;
+  text-shadow: 0 0 10px rgba(192, 192, 192, 0.8);
+}
+
+/* Subtitle Animation */
+.subtitle {
+  font-size: 1.5rem;
+  margin-top: 10px;
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeIn 1.5s ease-out 0.5s forwards;
+}
+
+/* CTA Button */
+.cta {
+  display: inline-block;
+  margin-top: 20px;
+  padding: 12px 25px;
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: black;
+  background: silver;
+  border-radius: 5px;
+  text-decoration: none;
+  transition: transform 0.3s ease-in-out, background 0.3s ease-in-out;
+  opacity: 0;
+  animation: fadeIn 1s ease-out 1s forwards;
+}
+
+.cta:hover {
+  background: white;
+  transform: scale(1.1);
+}
+
+/* Background Floating Dots Effect */
+.hero::before, .hero::after {
+  content: "";
+  position: absolute;
+  width: 150px;
+  height: 150px;
+  background: radial-gradient(circle, silver, transparent);
+  opacity: 0.3;
+  filter: blur(100px);
+  animation: float 6s infinite alternate ease-in-out;
+}
+
+.hero::before {
+  top: 10%;
+  left: 15%;
+}
+
+.hero::after {
+  bottom: 10%;
+  right: 15%;
+}
+
+/* Keyframe Animations */
+@keyframes fadeInUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideIn {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes float {
+  from {
+    transform: translateY(0);
+  }
+  to {
+    transform: translateY(-30px);
+  }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .title {
+    font-size: 2.5rem;
+  }
+  
+  .subtitle {
+    font-size: 1.2rem;
+  }
+
+  .cta {
+    font-size: 1rem;
+  }
+}

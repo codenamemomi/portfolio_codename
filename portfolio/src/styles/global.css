@@ -1,0 +1,33 @@
+/* Global reset */
+html {
+    scroll-behavior: smooth;
+  }
+  
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+  }
+  
+  /* Apply font and colors */
+  body {
+    background: linear-gradient(135deg, #000000, #222222);
+    color: white;
+  }
+  
+  
+  /* Custom scrollbar */
+  ::-webkit-scrollbar {
+    width: 8px;
+  }
+  
+  ::-webkit-scrollbar-track {
+    background: #111;
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    background: silver;
+    border-radius: 10px;
+  }
+  

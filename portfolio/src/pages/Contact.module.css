@@ -1,0 +1,98 @@
+.contact {
+  padding: 80px 20px;
+  text-align: center;
+  background: #111;
+  color: white;
+}
+
+.contact h2 {
+  font-size: 2rem;
+  margin-bottom: 10px;
+  font-weight: bold;
+  letter-spacing: 1px;
+}
+
+.contact p {
+  font-size: 1.1rem;
+  margin-bottom: 30px;
+  color: #ccc;
+}
+
+/* Form Styling */
+.form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+  width: 100%;
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+input, textarea {
+  width: 100%;
+  padding: 12px;
+  border: 2px solid silver;
+  background: #222;
+  color: #fff;
+  font-size: 1rem;
+  border-radius: 5px;
+  transition: 0.3s ease-in-out;
+}
+
+input:focus, textarea:focus {
+  border-color: white;
+  outline: none;
+}
+
+button {
+  width: 100%;
+  padding: 12px;
+  background: silver;
+  color: black;
+  font-weight: bold;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: transform 0.3s ease-in-out, background 0.3s;
+}
+
+button:hover {
+  background: white;
+  transform: scale(1.05);
+}
+
+/* Social Links */
+.socials {
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+.socials a {
+  color: white;
+  font-size: 1.2rem;
+  text-decoration: none;
+  transition: transform 0.3s ease-in-out, color 0.3s;
+}
+
+.socials a:hover {
+  transform: scale(1.2);
+  color: silver;
+}
+
+/* Responsive Design */
+@media (max-width: 600px) {
+  .contact {
+    padding: 50px 15px;
+  }
+
+  .form {
+    width: 100%;
+  }
+
+  button {
+    width: 100%;
+  }
+}

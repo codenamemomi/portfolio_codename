@@ -1,8 +1,10 @@
 .projects {
-  padding: 80px 50px;
+  padding: 100px 50px;
   text-align: center;
-  background: linear-gradient(135deg, #000000, #222222);
+  background: transparent; /* Starts from #333 */
   color: white;
+  position: relative;
+  z-index: 3;
 }
 
 h2 {

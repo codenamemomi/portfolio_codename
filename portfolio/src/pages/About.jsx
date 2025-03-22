@@ -1,17 +1,24 @@
+import { useEffect, useState } from "react";
 import styles from "./About.module.css";
 import profilePic from "../assets/profile.jpg"; // Ensure this path is correct
 
 const About = () => {
+  const [isVisible, setIsVisible] = useState(false);
+
+  useEffect(() => {
+    setTimeout(() => setIsVisible(true), 300); // Delay for smooth transition
+  }, []);
+
   return (
-    <section className={styles.about} id="about">
+    <section className={`${styles.about} ${isVisible ? styles.show : ""}`} id="about">
       <div className={styles.container}>
         {/* Profile Image */}
-        <div className={styles.imageContainer}>
+        <div className={`${styles.imageContainer} ${isVisible ? styles.fadeIn : ""}`}>
           <img src={profilePic} alt="Profile" className={styles.profileImage} />
         </div>
 
         {/* About Content */}
-        <div className={styles.textContainer}>
+        <div className={`${styles.textContainer} ${isVisible ? styles.slideIn : ""}`}>
           <h2>About Me</h2>
           <p>
             I am a proficient developer with a strong command of <strong>Python, JavaScript, HTML, CSS,</strong> and <strong>API development.</strong> 

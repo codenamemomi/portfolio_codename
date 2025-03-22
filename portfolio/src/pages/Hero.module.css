@@ -5,18 +5,17 @@
   justify-content: center;
   align-items: center;
   text-align: center;
-  background: linear-gradient(135deg, #000000, #222222);
+  background: linear-gradient(135deg, #111, #222); /* Ends at #222 */
   color: white;
   overflow: hidden;
   position: relative;
-  z-index: 2
+  z-index: 10;
+  padding: 80px 20px;
 }
 
-/* Content Animation */
 .content {
-  opacity: 0;
-  transform: translateY(50px);
-  animation: fadeInUp 1s ease-out forwards;
+  opacity: 1; /* Ensure visibility */
+  transform: translateY(0);
 }
 
 /* Animated Title */

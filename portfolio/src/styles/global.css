@@ -12,9 +12,12 @@ html {
   
   /* Apply font and colors */
   body {
-    background: linear-gradient(135deg, #000000, #222222);
+    background: linear-gradient(135deg, #111, #222, #333);
     color: white;
+    margin: 0;
+    padding: 0;
   }
+  
   
   
   /* Custom scrollbar */

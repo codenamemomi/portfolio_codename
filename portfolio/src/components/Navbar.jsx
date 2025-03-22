@@ -29,9 +29,9 @@ const Navbar = () => {
       </div>
 
       <ul className={`${styles.navLinks} ${menuOpen ? styles.show : ""}`}>
-        <li><Link to="/" onClick={() => setMenuOpen(false)}>Home</Link></li>
-        <li><Link to="/about" onClick={() => setMenuOpen(false)}>About</Link></li>
-        <li><Link to="/contact" onClick={() => setMenuOpen(false)}>Contact</Link></li>
+        <li><Link to="/" onClick={() => setMenuOpen(false)}>Home</Link> </li>
+        <li><Link to="/about" onClick={() => setMenuOpen(false)}>About</Link> </li>
+        <li><Link to="/contact" onClick={() => setMenuOpen(false)}>Contact</Link> </li>
         <li>
           <a href="https://github.com/codenamemomi" target="_blank" rel="noopener noreferrer">
             <FaGithub />

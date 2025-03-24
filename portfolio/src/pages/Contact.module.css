@@ -96,3 +96,37 @@ button:hover {
     width: 100%;
   }
 }
+
+/* Add fade-in animation */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Apply animation to contact section */
+.contact {
+  animation: fadeIn 1s ease-out;
+}
+
+/* Add delay for staggered effect */
+.contact h2 {
+  animation: fadeIn 1s ease-out 0.3s backwards;
+}
+
+.contact p {
+  animation: fadeIn 1s ease-out 0.5s backwards;
+}
+
+.form {
+  animation: fadeIn 1s ease-out 0.7s backwards;
+}
+
+.socials {
+  animation: fadeIn 1s ease-out 1s backwards;
+}

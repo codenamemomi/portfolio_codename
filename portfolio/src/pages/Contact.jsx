@@ -1,9 +1,14 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import styles from "./Contact.module.css";
 
 const Contact = () => {
   const [formData, setFormData] = useState({ name: "", email: "", message: "" });
   const [responseMessage, setResponseMessage] = useState("");
+  const [isVisible, setIsVisible] = useState(false); // For animation
+
+  useEffect(() => {
+    setTimeout(() => setIsVisible(true), 200); // Delayed animation
+  }, []);
 
   // Handle input change
   const handleChange = (e) => {
@@ -13,14 +18,14 @@ const Contact = () => {
   // Handle form submission
   const handleSubmit = async (e) => {
     e.preventDefault();
-  
+
     try {
       const response = await fetch("https://form-forums.vercel.app/api/v1/contact", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(formData),
       });
-  
+
       if (response.ok) {
         setResponseMessage("Message sent successfully!");
         setFormData({ name: "", email: "", message: "" }); // Clear form
@@ -29,13 +34,13 @@ const Contact = () => {
         setResponseMessage(errorData.detail || "Failed to send message. Try again.");
       }
     } catch (error) {
-      console.error("Error submitting form:", error); // Log the error
+      console.error("Error submitting form:", error);
       setResponseMessage("An error occurred. Please try again.");
     }
   };
 
   return (
-    <section className={styles.contact} id="contact">
+    <section className={`${styles.contact} ${isVisible ? styles.visible : ""}`} id="contact">
       <h2>Contact Me</h2>
       <p>Have a question or want to work together? Feel free to reach out!</p>
 

@@ -12,6 +12,7 @@ html {
   
   /* Apply font and colors */
   body {
+    font-family: Ariel, Helvetica, sans-serif;
     background: linear-gradient(135deg, #111, #222, #333);
     color: white;
     margin: 0;

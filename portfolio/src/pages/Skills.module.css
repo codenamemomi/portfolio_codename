@@ -1,54 +1,15 @@
-.skills {
+.skillsSection {
   text-align: center;
-  padding: 100px 20px;
-  background: transparent; /* Starts from #222 */
+  padding: 100px 20px 40px;
+  background: #111;
   color: white;
   position: relative;
   z-index: 5;
+  scroll-margin-top: 80px; 
+  animation: fadeIn 0.6s ease-in-out;
 }
 
-h2 {
-  font-size: 2.5rem;
-  margin-bottom: 30px;
-  text-transform: uppercase;
-  letter-spacing: 2px;
-}
-
-.skillsGrid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
-  gap: 20px;
-  justify-content: center;
-  max-width: 800px;
-  margin: auto;
-}
-
-.skillCard {
-  background: rgba(255, 255, 255, 0.1);
-  padding: 20px;
-  border-radius: 10px;
-  text-align: center;
-  box-shadow: 0 4px 8px rgba(255, 255, 255, 0.1);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  opacity: 0;
-  transform: translateY(20px);
-  animation: float 4s ease-in-out infinite; /* Floating effect */
-}
-
-@keyframes float {
-  0%, 100% {
-    transform: translateY(0);
-  }
-  50% {
-    transform: translateY(-5px);
-  }
-}
-
-.skillCard.fadeIn {
-  animation: fadeInUp 0.5s ease forwards;
-}
-
-@keyframes fadeInUp {
+@keyframes fadeIn {
   from {
     opacity: 0;
     transform: translateY(20px);
@@ -59,34 +20,129 @@ h2 {
   }
 }
 
+.toggleButton {
+  background: linear-gradient(135deg, #007aff, #005ecb);
+  color: white;
+  border: none;
+  padding: 12px 20px;
+  border-radius: 25px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+  margin-bottom: 20px;
+  font-weight: bold;
+  letter-spacing: 0.5px;
+  box-shadow: 0px 4px 8px rgba(0, 122, 255, 0.3);
+}
+
+.toggleButton:hover {
+  transform: scale(1.05);
+  background: linear-gradient(135deg, #005ecb, #0044a4);
+  box-shadow: 0px 5px 12px rgba(255, 255, 255, 0.2);
+}
+
+.toggleButton:active {
+  transform: scale(0.98);
+}
+
+.skillsContainer {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.5s ease-in-out, opacity 0.4s ease;
+  opacity: 0;
+}
+
+.expanded {
+  max-height: 800px;
+  opacity: 1;
+}
+
+.collapsed {
+  max-height: 0;
+  opacity: 0;
+}
+
+.skillsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); 
+  gap: 15px;
+  max-width: 700px; 
+  margin: 0 auto;
+  padding-top: 10px;
+}
+
+.skillCard {
+  background: rgba(34, 34, 34, 0.95);
+  backdrop-filter: blur(10px);
+  padding: 18px;
+  border-radius: 12px;
+  text-align: center;
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, opacity 0.4s ease;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transform: translateY(15px);
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.skillCard .icon {
+  font-size: 32px;
+  margin-bottom: 8px;
+  color: #00aaff;
+  transition: color 0.3s ease-in-out;
+}
+
+.skillCard .skillName {
+  font-size: 1rem;
+  font-weight: bold;
+  color: white;
+  transition: color 0.3s ease-in-out;
+}
+
 .skillCard:hover {
-  transform: scale(1.1);
-  box-shadow: 0 0 15px rgba(255, 255, 255, 0.3), 
-              0 0 30px rgba(255, 255, 255, 0.2);
+  transform: scale(1.07);
+  box-shadow: 0px 5px 15px rgba(255, 255, 255, 0.2);
 }
 
-.icon {
-  font-size: 2rem;
-  display: block;
-  margin-bottom: 10px;
+.skillCard:hover .icon {
+  color: #007aff;
 }
 
-.particles {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: -1; /* Send behind everything */
+.skillCard:hover .skillName {
+  color: #d4e9ff;
 }
 
-/* Responsive Design */
-@media (max-width: 600px) {
+.fadeIn {
+  opacity: 1;
+  transform: translateY(0);
+  animation: fadeIn 0.5s ease-out forwards;
+}
+
+@media (max-width: 768px) {
   .skillsGrid {
-    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+    max-width: 90%;
+  }
+}
+
+@media (max-width: 480px) {
+  .toggleButton {
+    padding: 10px 16px;
+    font-size: 14px;
+  }
+  
+  .skillCard {
+    padding: 15px;
+  }
+  
+  .skillCard .icon {
+    font-size: 28px;
   }
 
-  h2 {
-    font-size: 2rem;
+  .skillCard .skillName {
+    font-size: 0.9rem;
   }
 }

@@ -1,37 +1,49 @@
 /* Global reset */
 html {
-    scroll-behavior: smooth;
-  }
-  
+  scroll-behavior: smooth;
+  font-size: 16px;
+}
+
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    scroll-behavior: smooth;
-  }
-  
-  /* Apply font and colors */
-  body {
-    font-family: Ariel, Helvetica, sans-serif;
-    background: linear-gradient(135deg, #111, #222, #333);
-    color: white;
-    margin: 0;
-    padding: 0;
-  }
-  
-  
-  
-  /* Custom scrollbar */
-  ::-webkit-scrollbar {
-    width: 8px;
-  }
-  
-  ::-webkit-scrollbar-track {
-    background: #111;
-  }
-  
-  ::-webkit-scrollbar-thumb {
-    background: silver;
-    border-radius: 10px;
-  }
-  
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+}
+
+/* Smooth font and background */
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  background: linear-gradient(135deg, #121212, #1a1a1a, #222);
+  color: white;
+  margin: 0;
+  padding: 0;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: #1a1a1a;
+}
+
+::-webkit-scrollbar-thumb {
+  background: silver;
+  border-radius: 10px;
+  transition: background 0.3s ease-in-out;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #ccc;
+}
+
+/* Prevent layout shift due to bottom navbar */
+#root {
+  min-height: 100vh;
+  padding-bottom: 60px; /* Prevents overlap with BottomNavbar */
+  position: relative;
+}

@@ -1,103 +1,213 @@
 .contact {
-  padding: 80px 20px;
+  position: relative;
+  padding-top: 80px; /* Adjust based on navbar height */
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  z-index: 1;
+  background: #121212;
+}
+
+.contactForm {
   text-align: center;
-  background: #111;
-  color: white;
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeIn 0.5s ease-out forwards;
+  width: 90%;
+  max-width: 400px;
+  background: rgba(255, 255, 255, 0.1);
+  padding: 25px;
+  border-radius: 12px;
+  backdrop-filter: blur(10px);
+  box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.2);
 }
 
 .contact h2 {
   font-size: 2rem;
-  margin-bottom: 10px;
   font-weight: bold;
-  letter-spacing: 1px;
+  color: white;
+  text-transform: uppercase;
+  margin-bottom: 20px;
+  opacity: 0;
+  animation: fadeIn 0.6s ease-out forwards;
 }
 
-.contact p {
-  font-size: 1.1rem;
-  margin-bottom: 30px;
-  color: #ccc;
+.avatar {
+  font-size: 60px;
+  color: #aaa;
+  animation: popIn 0.4s ease-out;
 }
 
-/* Form Styling */
-.form {
+@keyframes popIn {
+  0% {
+    transform: scale(0.8);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+.contactForm input,
+.contactForm textarea {
+  width: 100%;
+  padding: 12px;
+  margin: 10px 0;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  background: #222;
+  color: white;
+  transition: background 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+  box-shadow: inset 0px 2px 4px rgba(255, 255, 255, 0.1);
+}
+
+.contactForm input:focus,
+.contactForm textarea:focus {
+  background: #333;
+  box-shadow: 0px 0px 8px rgba(3, 218, 198, 0.3);
+}
+
+.contactForm button {
+  width: 100%;
+  padding: 12px;
+  background: linear-gradient(135deg, #03dac6, #018786);
+  color: white;
+  border: none;
+  border-radius: 25px;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s ease;
+  box-shadow: 0px 4px 10px rgba(3, 218, 198, 0.3);
+}
+
+.contactForm button:hover {
+  background: linear-gradient(135deg, #018786, #03dac6);
+  transform: scale(1.05);
+  box-shadow: 0px 6px 15px rgba(3, 218, 198, 0.4);
+}
+
+.contactForm button:active::after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background: rgba(255, 255, 255, 0.3);
+  animation: ripple 0.4s ease-out;
+}
+
+@keyframes ripple {
+  from {
+    opacity: 1;
+    transform: scale(1);
+  }
+  to {
+    opacity: 0;
+    transform: scale(1.5);
+  }
+}
+
+.chatContainer {
+  width: 90%;
+  max-width: 400px;
+  background: rgba(255, 255, 255, 0.08);
+  color: white;
+  padding: 20px;
+  border-radius: 15px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+  backdrop-filter: blur(15px);
+  transform: translateY(50px);
+  opacity: 0;
+  animation: slideUp 0.6s ease-out forwards;
+}
+
+.chatHeader {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  border-bottom: 2px solid #333;
+  padding-bottom: 10px;
+  margin-bottom: 10px;
+}
+
+.chatBox {
+  max-height: 300px;
+  overflow-y: auto;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  gap: 15px;
-  width: 100%;
-  max-width: 500px;
-  margin: 0 auto;
+  gap: 10px;
+  padding: 10px;
 }
 
-input, textarea {
-  width: 100%;
+.message {
   padding: 12px;
-  border: 2px solid silver;
-  background: #222;
-  color: #fff;
-  font-size: 1rem;
-  border-radius: 5px;
-  transition: 0.3s ease-in-out;
+  border-radius: 12px;
+  max-width: 75%;
+  font-size: 0.9rem;
 }
 
-input:focus, textarea:focus {
-  border-color: white;
-  outline: none;
-}
-
-button {
-  width: 100%;
-  padding: 12px;
-  background: silver;
+.user {
+  background: #03dac6;
+  align-self: flex-end;
   color: black;
   font-weight: bold;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  transition: transform 0.3s ease-in-out, background 0.3s;
 }
 
-button:hover {
-  background: white;
-  transform: scale(1.05);
+.bot {
+  background: #222;
+  align-self: flex-start;
 }
 
-/* Social Links */
-.socials {
-  margin-top: 20px;
+.chatForm {
   display: flex;
-  justify-content: center;
-  gap: 20px;
+  align-items: center;
+  gap: 10px;
+  margin-top: 10px;
 }
 
-.socials a {
+.chatForm input {
+  flex: 1;
+  padding: 10px;
+  border-radius: 25px;
+  border: none;
+  background: #222;
   color: white;
-  font-size: 1.2rem;
-  text-decoration: none;
-  transition: transform 0.3s ease-in-out, color 0.3s;
+  transition: background 0.3s ease-in-out;
 }
 
-.socials a:hover {
-  transform: scale(1.2);
-  color: silver;
+.chatForm input:focus {
+  background: #333;
 }
 
-/* Responsive Design */
-@media (max-width: 600px) {
-  .contact {
-    padding: 50px 15px;
-  }
-
-  .form {
-    width: 100%;
-  }
-
-  button {
-    width: 100%;
-  }
+.chatForm button {
+  background: #03dac6;
+  border: none;
+  padding: 10px 14px;
+  border-radius: 50%;
+  color: black;
+  font-weight: bold;
+  cursor: pointer;
+  transition: transform 0.2s ease-in-out;
+  box-shadow: 0px 3px 8px rgba(3, 218, 198, 0.3);
 }
 
-/* Add fade-in animation */
+.chatForm button:hover {
+  transform: scale(1.1);
+  box-shadow: 0px 5px 12px rgba(3, 218, 198, 0.4);
+}
+
+.chatForm button:active {
+  transform: scale(0.9);
+}
+
 @keyframes fadeIn {
   from {
     opacity: 0;
@@ -109,24 +219,23 @@ button:hover {
   }
 }
 
-/* Apply animation to contact section */
-.contact {
-  animation: fadeIn 1s ease-out;
+@keyframes slideUp {
+  from {
+    transform: translateY(50px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
 }
 
-/* Add delay for staggered effect */
-.contact h2 {
-  animation: fadeIn 1s ease-out 0.3s backwards;
-}
+@media (max-width: 768px) {
+  .contact h2 {
+    font-size: 1.8rem;
+  }
 
-.contact p {
-  animation: fadeIn 1s ease-out 0.5s backwards;
-}
-
-.form {
-  animation: fadeIn 1s ease-out 0.7s backwards;
-}
-
-.socials {
-  animation: fadeIn 1s ease-out 1s backwards;
+  .chatContainer {
+    max-width: 100%;
+  }
 }

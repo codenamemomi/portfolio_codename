@@ -1,0 +1,104 @@
+.resumeSection {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: white;
+    background: #121212;
+    padding: 40px 20px;
+    margin-top: 80px; /* Prevents overlap with top navbar */
+    margin-bottom: 100px; /* Prevents underlapping with bottom navbar */
+    animation: fadeIn 0.6s ease-in-out;
+  }
+  
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  .resumeCard {
+    background: rgba(30, 30, 30, 0.95);
+    backdrop-filter: blur(12px);
+    padding: 25px;
+    border-radius: 15px;
+    box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.3);
+    width: 90%;
+    max-width: 800px;
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+  }
+  
+  .resumeCard:hover {
+    transform: translateY(-5px);
+    box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.4);
+  }
+  
+  .resumeViewer {
+    width: 100%;
+    height: 75vh;
+    border: none;
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+    transition: box-shadow 0.3s ease-in-out;
+  }
+  
+  .resumeViewer:hover {
+    box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.3);
+  }
+  
+  .downloadBtn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 20px;
+    padding: 14px 20px;
+    background: linear-gradient(135deg, #1976d2, #2196f3);
+    color: white;
+    text-decoration: none;
+    font-size: 1rem;
+    border-radius: 50px;
+    font-weight: bold;
+    letter-spacing: 1px;
+    transition: background 0.3s ease-in-out, transform 0.2s ease-in-out;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+  }
+  
+  .downloadBtn:hover {
+    background: linear-gradient(135deg, #0d47a1, #1976d2);
+    transform: scale(1.05);
+    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.3);
+  }
+  
+  .downloadBtn:active {
+    background: linear-gradient(135deg, #0b3a8a, #0d47a1);
+    transform: scale(0.98);
+  }
+  
+  @media (max-width: 768px) {
+    .resumeSection {
+      margin-top: 100px;
+      margin-bottom: 120px; /* Extra space for bottom navbar */
+    }
+  
+    .resumeCard {
+      width: 95%;
+    }
+  
+    .resumeViewer {
+      height: 65vh;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .downloadBtn {
+      padding: 12px 16px;
+      font-size: 0.9rem;
+    }
+  }
+  

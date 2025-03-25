@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-import Particles from "react-tsparticles";
 import styles from "./Skills.module.css";
 
 const skills = [
@@ -10,38 +9,49 @@ const skills = [
   { name: "React", icon: "⚛️" },
   { name: "Django", icon: "🟢" },
   { name: "FastAPI", icon: "🚀" },
-  { name: "API Development", icon: "🔗" }
+  { name: "API Development", icon: "🔗" },
+  { name: "Leadership", icon: "👑" },
+  { name: "Teamwork", icon: "🤝" },
+  { name: "Coordination", icon: "🧩" },
+  { name: "Analytical Thinking", icon: "🧠" }
 ];
 
 const Skills = () => {
   const [visibleSkills, setVisibleSkills] = useState([]);
+  const [inView, setInView] = useState(false);
 
   useEffect(() => {
-    skills.forEach((_, index) => {
-      setTimeout(() => {
-        setVisibleSkills((prev) => [...prev, index]);
-      }, index * 200);
-    });
+    const handleScroll = () => {
+      const skillsSection = document.getElementById("skills");
+      if (skillsSection) {
+        const rect = skillsSection.getBoundingClientRect();
+        if (rect.top < window.innerHeight * 0.75) {
+          setInView(true);
+        }
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    handleScroll(); 
+    
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  useEffect(() => {
+    if (inView) {
+      setVisibleSkills([]);
+      skills.forEach((_, index) => {
+        setTimeout(() => {
+          setVisibleSkills((prev) => [...prev, index]);
+        }, index * 100);
+      });
+    }
+  }, [inView]);
+
   return (
-    <>
-      {/* Background Particles (Placed Outside to Avoid Overlap) */}
-      <Particles
-        id="particles"
-        options={{
-          background: { color: "#111" },
-          particles: {
-            number: { value: 50 },
-            size: { value: 2 },
-            move: { enable: true, speed: 1 }
-          }
-        }}
-        className={styles.particles}
-      />
-  
-      <section className={styles.skills} id="skills">
-        <h2>Skills & Technologies</h2>
+    <section className={styles.skillsSection} id="skills">
+      {/* Skills Container */}
+      <div className={`${styles.skillsContainer} ${inView ? styles.expanded : styles.collapsed}`}>
         <div className={styles.skillsGrid}>
           {skills.map((skill, index) => (
             <div
@@ -53,9 +63,9 @@ const Skills = () => {
             </div>
           ))}
         </div>
-      </section>
-    </>
-  );  
+      </div>
+    </section>
+  );
 };
 
 export default Skills;

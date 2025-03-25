@@ -6,26 +6,49 @@
   height: 100vh;
   background: black;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   color: white;
-  font-weight: bold;
   text-align: center;
   z-index: 10000;
   opacity: 1;
-  animation: fadeOut 1.5s ease-in-out 2.5s forwards;
-  padding: 20px;
+  animation: fadeOut 1.5s ease-in-out 3.5s forwards;
 }
 
-/* Default Text Animation */
-.name {
+.logoContainer {
   opacity: 0;
-  transform: scale(0.8);
+  transform: scale(0.5);
   animation: fadeInScale 1.5s ease-in-out forwards;
-  font-size: 3rem; /* Default for larger screens */
 }
 
-/* Fade In & Scale Animation */
+.name {
+  font-size: 3rem;
+  font-weight: bold;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  background: linear-gradient(45deg, #fff, #ccc);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.progressBar {
+  width: 80%;
+  height: 5px;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 50px;
+  overflow: hidden;
+  margin-top: 20px;
+}
+
+.progress {
+  width: 0%;
+  height: 100%;
+  background: white;
+  animation: progressLoad 2.5s ease-in-out forwards;
+}
+
 @keyframes fadeInScale {
   from {
     opacity: 0;
@@ -37,7 +60,6 @@
   }
 }
 
-/* Fade Out Animation */
 @keyframes fadeOut {
   to {
     opacity: 0;
@@ -45,7 +67,15 @@
   }
 }
 
-/* 📱 Responsive Design for Smaller Screens */
+@keyframes progressLoad {
+  from {
+    width: 0%;
+  }
+  to {
+    width: 100%;
+  }
+}
+
 @media (max-width: 1024px) {
   .name {
     font-size: 2.5rem;

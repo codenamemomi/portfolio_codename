@@ -79,6 +79,28 @@
     background: linear-gradient(135deg, #0b3a8a, #0d47a1);
     transform: scale(0.98);
   }
+
+  .fullScreenBtn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 10px;
+    padding: 12px 18px;
+    background: linear-gradient(135deg, #424242, #616161);
+    color: white;
+    text-decoration: none;
+    font-size: 0.9rem;
+    border-radius: 50px;
+    font-weight: bold;
+    transition: background 0.3s ease-in-out, transform 0.2s ease-in-out;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+  }
+  
+  .fullScreenBtn:hover {
+    background: linear-gradient(135deg, #333, #444);
+    transform: scale(1.05);
+  }
+  
   
   @media (max-width: 768px) {
     .resumeSection {

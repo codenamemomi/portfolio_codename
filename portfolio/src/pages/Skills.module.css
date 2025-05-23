@@ -1,148 +1,73 @@
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono&display=swap');
+
 .skillsSection {
-  text-align: center;
-  padding: 100px 20px 40px;
-  background: #111;
-  color: white;
+  height: 100vh;
+  background: transparent;
+  font-family: 'IBM Plex Mono', monospace;
+  scroll-snap-align: start;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   position: relative;
-  z-index: 5;
-  scroll-margin-top: 80px; 
-  animation: fadeIn 0.6s ease-in-out;
-}
-
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-.toggleButton {
-  background: linear-gradient(135deg, #007aff, #005ecb);
-  color: white;
-  border: none;
-  padding: 12px 20px;
-  border-radius: 25px;
-  font-size: 16px;
-  cursor: pointer;
-  transition: background 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
-  margin-bottom: 20px;
-  font-weight: bold;
-  letter-spacing: 0.5px;
-  box-shadow: 0px 4px 8px rgba(0, 122, 255, 0.3);
-}
-
-.toggleButton:hover {
-  transform: scale(1.05);
-  background: linear-gradient(135deg, #005ecb, #0044a4);
-  box-shadow: 0px 5px 12px rgba(255, 255, 255, 0.2);
-}
-
-.toggleButton:active {
-  transform: scale(0.98);
+  z-index: 2;
 }
 
 .skillsContainer {
-  max-height: 0;
-  overflow: hidden;
-  transition: max-height 0.5s ease-in-out, opacity 0.4s ease;
-  opacity: 0;
-}
-
-.expanded {
-  max-height: 800px;
-  opacity: 1;
-}
-
-.collapsed {
-  max-height: 0;
-  opacity: 0;
+  max-width: 1000px;
+  width: 90%;
+  padding: 2rem;
+  border-radius: 12px;
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(0, 255, 153, 0.1);
+  background: rgba(0, 255, 153, 0.03);
+  box-shadow: 0 10px 30px rgba(0, 255, 153, 0.15);
+  transition: all 0.5s ease-in-out;
 }
 
 .skillsGrid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); 
-  gap: 15px;
-  max-width: 700px; 
-  margin: 0 auto;
-  padding-top: 10px;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 1.5rem;
+  margin-top: 1.5rem;
 }
 
 .skillCard {
-  background: rgba(34, 34, 34, 0.95);
-  backdrop-filter: blur(10px);
-  padding: 18px;
-  border-radius: 12px;
+  background: rgba(0, 255, 153, 0.05);
+  border: 1px solid rgba(0, 255, 153, 0.2);
+  color: #00ff99;
+  padding: 1rem;
+  border-radius: 8px;
   text-align: center;
-  cursor: pointer;
-  transition: transform 0.3s ease, box-shadow 0.3s ease, opacity 0.4s ease;
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
+  font-size: 0.9rem;
   opacity: 0;
-  transform: translateY(15px);
-  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
-}
-
-.skillCard .icon {
-  font-size: 32px;
-  margin-bottom: 8px;
-  color: #00aaff;
-  transition: color 0.3s ease-in-out;
-}
-
-.skillCard .skillName {
-  font-size: 1rem;
-  font-weight: bold;
-  color: white;
-  transition: color 0.3s ease-in-out;
-}
-
-.skillCard:hover {
-  transform: scale(1.07);
-  box-shadow: 0px 5px 15px rgba(255, 255, 255, 0.2);
-}
-
-.skillCard:hover .icon {
-  color: #007aff;
-}
-
-.skillCard:hover .skillName {
-  color: #d4e9ff;
+  transform: translateY(20px);
+  transition: all 0.3s ease;
 }
 
 .fadeIn {
   opacity: 1;
   transform: translateY(0);
-  animation: fadeIn 0.5s ease-out forwards;
 }
 
-@media (max-width: 768px) {
+.icon {
+  font-size: 1.8rem;
+  margin-bottom: 0.5rem;
+  display: block;
+  text-shadow: 0 0 8px #00ff99;
+}
+
+.expanded {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.collapsed {
+  opacity: 0;
+  transform: scale(0.95);
+}
+
+@media (max-width: 600px) {
   .skillsGrid {
-    max-width: 90%;
-  }
-}
-
-@media (max-width: 480px) {
-  .toggleButton {
-    padding: 10px 16px;
-    font-size: 14px;
-  }
-  
-  .skillCard {
-    padding: 15px;
-  }
-  
-  .skillCard .icon {
-    font-size: 28px;
-  }
-
-  .skillCard .skillName {
-    font-size: 0.9rem;
+    grid-template-columns: repeat(2, 1fr);
   }
 }

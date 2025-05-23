@@ -52,6 +52,9 @@ const Skills = () => {
     <section className={styles.skillsSection} id="skills">
       {/* Skills Container */}
       <div className={`${styles.skillsContainer} ${inView ? styles.expanded : styles.collapsed}`}>
+        <h2 style={{ color: "#00ff99", fontSize: "1.5rem", marginBottom: "1rem" }}>
+  &gt; loaded skillset/
+</h2>
         <div className={styles.skillsGrid}>
           {skills.map((skill, index) => (
             <div

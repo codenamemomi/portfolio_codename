@@ -1,10 +1,12 @@
 import Hero from "./Hero";
-import Skills from "./Skills";
+import Certificates from "./Certificate";
+import styles from "./Home.module.css"; // Optional CSS module for layout control
 
 const Home = () => {
   return (
-    <div>
+    <div className={styles.homeContainer}>
       <Hero />
+      <Certificates />
     </div>
   );
 };

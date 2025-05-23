@@ -1,81 +1,86 @@
-/* Center app content properly */
-#root {
-  width: 100%;
-  max-width: 100%;
-  margin: 0 auto;
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono&display=swap');
+
+* {
+  margin: 0;
   padding: 0;
-  text-align: center;
+  box-sizing: border-box;
 }
 
-/* Improve layout consistency */
-.appContainer {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  min-height: 100vh;
+html, body {
+  height: 100%;
   width: 100%;
-}
-
-/* Adjust content area */
-.content {
-  width: 92%;
-  max-width: 1200px;
-  padding: 20px;
-}
-
-/* Smooth scrolling */
-html {
+  font-family: 'IBM Plex Mono', monospace;
+  background-color: #0d0d0d;
+  color: #00ff99;
   scroll-behavior: smooth;
+  overflow: auto;
 }
 
-/* Logo Styling */
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms ease-in-out;
+a {
+  color: #00ff99;
+  text-decoration: none;
 }
 
-.logo:hover {
-  filter: drop-shadow(0 0 2em silver);
+a:hover {
+  text-shadow: 0 0 8px #00ff99;
+  transition: all 0.3s ease-in-out;
 }
 
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafb);
-}
-
-/* Logo Spin Animation */
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
-}
-
-/* Card Styling */
-.card {
-  padding: 2em;
-  background: rgba(255, 255, 255, 0.05);
-  border-radius: 10px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-}
-
-/* Docs link styling */
-.read-the-docs {
-  color: #bbb;
-  font-size: 14px;
-}
-
-/* Ensure no overlapping with BottomNavbar */
-#root {
-  padding-bottom: 60px; /* Prevents underlapping with navbar */
+.app-wrapper {
   position: relative;
+  height: 100vh;
+  width: 100vw;
+  overflow: hidden;
+}
+
+.main-container {
+  height: 100vh;
+  overflow-y: scroll;
+  scroll-snap-type: y mandatory;
+  position: relative;
+  z-index: 2;
+}
+
+.main-container > * {
+  scroll-snap-align: start;
+}
+
+
+a:focus {
+  outline: 2px dashed #00ff99;
+  outline-offset: 4px;
+}
+
+.hidden { display: none; }
+.flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.fullscreen {
+  width: 100vw;
+  height: 100vh;
+}
+
+@keyframes glow {
+  0%, 100% {
+    text-shadow: 0 0 8px #00ff99;
+  }
+  50% {
+    text-shadow: 0 0 16px #00ff99;
+  }
+}
+
+body {
+  animation: glow 2.5s infinite ease-in-out;
+}
+
+@media (max-width: 768px) {
+  .main-container {
+    scroll-snap-type: none; /* mobile friendliness */
+  }
+
+  body {
+    font-size: 0.9rem;
+  }
 }

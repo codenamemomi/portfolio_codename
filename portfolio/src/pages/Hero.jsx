@@ -6,7 +6,7 @@ const Hero = () => {
     <section className={styles.hero}>
       <div className={styles.heroCard}>
         <h1 className={styles.title}>I'm <span>JOLAOLUWA</span></h1>
-        <p className={styles.subtitle}>A Backend Developer with some Frontend Skills</p>
+        <p className={styles.subtitle}>I automate things.</p>
         <Link to="/resume" className={styles.cta}>View Resume</Link>
       </div>
     </section>

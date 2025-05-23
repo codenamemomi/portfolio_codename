@@ -1,0 +1,13 @@
+.homeContainer {
+  display: flex;
+  flex-direction: column;
+}
+
+.section {
+  height: 100vh;
+  scroll-snap-align: start;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+}

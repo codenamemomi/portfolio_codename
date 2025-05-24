@@ -8,6 +8,7 @@ import Projects from "./pages/Projects";
 import SplashScreen from "./components/SplashScreen";
 import Skills from "./pages/Skills";
 import Resume from "./pages/Resume";
+import Certificates from "./pages/Certificate";
 import "./App.css";
 import MatrixRain from "./components/MatrixRain";
 
@@ -35,6 +36,7 @@ const App = () => {
             <Route path="/projects" element={<Projects />} />
             <Route path="/resume" element={<Resume />} />
             <Route path="/skills" element={<Skills />} />
+            <Route path="/certificate" element={<Certificates />} />
           </Routes>
         </div>
       </div>

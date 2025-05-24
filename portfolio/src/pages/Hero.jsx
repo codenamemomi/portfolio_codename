@@ -8,6 +8,7 @@ const Hero = () => {
         <h1 className={styles.title}>I'm <span>JOLAOLUWA</span></h1>
         <p className={styles.subtitle}>I automate things.</p>
         <Link to="/resume" className={styles.cta}>View Resume</Link>
+        <Link to="/certificate" className={styles.cta}>View Certs</Link>
       </div>
     </section>
   );

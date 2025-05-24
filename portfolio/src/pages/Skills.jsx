@@ -23,7 +23,6 @@ const Skills = () => {
   const [allowDismiss, setAllowDismiss] = useState(false);
   const containerRef = useRef(null);
 
-  // Detect if in view
   useEffect(() => {
     const handleScroll = () => {
       const skillsSection = document.getElementById("skills");
@@ -40,7 +39,6 @@ const Skills = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  // Animate skills
   useEffect(() => {
     if (inView) {
       setVisibleSkills([]);
@@ -50,13 +48,11 @@ const Skills = () => {
         }, index * 300);
       });
 
-      // Allow outside click to dismiss *after* animation starts
       const timer = setTimeout(() => setAllowDismiss(true), 1000);
       return () => clearTimeout(timer);
     }
   }, [inView]);
 
-  // Outside click logic
   useEffect(() => {
     const handleClickOutside = (event) => {
       if (!allowDismiss) return;

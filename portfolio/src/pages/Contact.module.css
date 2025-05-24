@@ -184,6 +184,7 @@
 @media (max-width: 600px) {
   .contact {
     padding: 2rem 1rem;
+    padding-top: 100px
   }
 
   .terminalWindow {

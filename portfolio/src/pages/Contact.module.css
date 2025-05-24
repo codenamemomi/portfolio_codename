@@ -1,5 +1,5 @@
 .contact {
-  padding-top: 100px;
+  padding-top: 120px;
   padding-bottom: 60px;
   min-height: 100vh;
   background-color: transparent;
@@ -16,6 +16,8 @@
   border: 1px solid #00ff00;
   box-shadow: 0 0 30px #00ff00aa;
   border-radius: 6px;
+  position: relative;
+  z-index: 1;
   display: flex;
   flex-direction: column;
   overflow: hidden;

@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import styles from "./Skills.module.css";
 
 const skills = [
@@ -19,7 +19,11 @@ const skills = [
 const Skills = () => {
   const [visibleSkills, setVisibleSkills] = useState([]);
   const [inView, setInView] = useState(false);
+  const [dismissed, setDismissed] = useState(false);
+  const [allowDismiss, setAllowDismiss] = useState(false);
+  const containerRef = useRef(null);
 
+  // Detect if in view
   useEffect(() => {
     const handleScroll = () => {
       const skillsSection = document.getElementById("skills");
@@ -33,10 +37,10 @@ const Skills = () => {
 
     window.addEventListener("scroll", handleScroll);
     handleScroll(); 
-    
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  // Animate skills
   useEffect(() => {
     if (inView) {
       setVisibleSkills([]);
@@ -45,12 +49,32 @@ const Skills = () => {
           setVisibleSkills((prev) => [...prev, index]);
         }, index * 300);
       });
+
+      // Allow outside click to dismiss *after* animation starts
+      const timer = setTimeout(() => setAllowDismiss(true), 1000);
+      return () => clearTimeout(timer);
     }
   }, [inView]);
 
+  // Outside click logic
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (!allowDismiss) return;
+
+      if (containerRef.current && !containerRef.current.contains(event.target)) {
+        setDismissed(true);
+      }
+    };
+
+    document.addEventListener("click", handleClickOutside);
+    return () => document.removeEventListener("click", handleClickOutside);
+  }, [allowDismiss]);
+
+  if (dismissed) return null;
+
   return (
     <section className={styles.skillsSection} id="skills">
-      <div className={styles.terminalWindow}>
+      <div className={styles.terminalWindow} ref={containerRef}>
         <div className={styles.terminalHeader}>
           <span className={styles.redDot}></span>
           <span className={styles.yellowDot}></span>

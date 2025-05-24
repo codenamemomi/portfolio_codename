@@ -9,7 +9,7 @@ import SplashScreen from "./components/SplashScreen";
 import Skills from "./pages/Skills";
 import Resume from "./pages/Resume";
 import "./App.css";
-import MatrixRain from "./components/MatrixRain"; // 👈 we'll build this next
+import MatrixRain from "./components/MatrixRain";
 
 const App = () => {
   const [loading, setLoading] = useState(true);
@@ -24,7 +24,7 @@ const App = () => {
   ) : (
     <Router>
       <div className="app-wrapper">
-        <MatrixRain /> {/* ✅ matrix background canvas */}
+        <MatrixRain /> {/* Background effect */}
         <Navbar toggleSkills={() => setShowSkills(!showSkills)} />
         {showSkills && <Skills />}
         <div className="main-container">

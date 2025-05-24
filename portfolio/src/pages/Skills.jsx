@@ -43,28 +43,34 @@ const Skills = () => {
       skills.forEach((_, index) => {
         setTimeout(() => {
           setVisibleSkills((prev) => [...prev, index]);
-        }, index * 100);
+        }, index * 300);
       });
     }
   }, [inView]);
 
   return (
     <section className={styles.skillsSection} id="skills">
-      {/* Skills Container */}
-      <div className={`${styles.skillsContainer} ${inView ? styles.expanded : styles.collapsed}`}>
-        <h2 style={{ color: "#00ff99", fontSize: "1.5rem", marginBottom: "1rem" }}>
-  &gt; loaded skillset/
-</h2>
-        <div className={styles.skillsGrid}>
-          {skills.map((skill, index) => (
-            <div
-              key={index}
-              className={`${styles.skillCard} ${visibleSkills.includes(index) ? styles.fadeIn : ""}`}
-            >
-              <span className={styles.icon}>{skill.icon}</span>
-              <p>{skill.name}</p>
-            </div>
-          ))}
+      <div className={styles.terminalWindow}>
+        <div className={styles.terminalHeader}>
+          <span className={styles.redDot}></span>
+          <span className={styles.yellowDot}></span>
+          <span className={styles.greenDot}></span>
+          <span className={styles.title}>skills-scan</span>
+        </div>
+        <div className={styles.terminalBody}>
+          <p className={styles.scanTitle}>&gt;&gt; Initiating network skill scan...</p>
+          <div className={styles.output}>
+            {skills.map((skill, index) => (
+              <div
+                key={index}
+                className={`${styles.skillLine} ${
+                  visibleSkills.includes(index) ? styles.visible : ""
+                }`}
+              >
+                <span className={styles.skillPrefix}>[+]</span> {skill.name} detected {skill.icon}
+              </div>
+            ))}
+          </div>
         </div>
       </div>
     </section>

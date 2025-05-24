@@ -1,110 +1,152 @@
 .about {
-  opacity: 0;
-  transform: translateY(20px);
-  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
-  padding: 2rem;
-  color: #00ff99;
-  font-family: "IBM Plex Mono", monospace;
+  padding: 100px 20px;
+  color: #00ff88;
+  font-family: "Courier New", Courier, monospace;
+  background: transparent;
+  position: relative;
+  z-index: 1;
 }
 
-.show {
-  opacity: 1;
-  transform: translateY(0);
+.terminalWindow {
+  background: #000e0a;
+  border: 2px solid #00ff88;
+  border-radius: 10px;
+  padding: 20px;
+  box-shadow: 0 0 10px #00ff8855;
 }
 
-.container {
-  max-width: 900px;
-  margin: 0 auto;
-  background-color: rgba(0, 255, 153, 0.05);
-  padding: 2rem;
-  border: 1px solid #00ff99;
+.terminalHeader {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 10px;
+}
+
+.greenDot, .yellowDot, .redDot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+}
+
+.greenDot { background: #00ff88; }
+.yellowDot { background: #ffdd00; }
+.redDot { background: #ff4444; }
+
+.windowTitle {
+  color: #00ff88;
+  font-weight: bold;
+  margin-left: auto;
+  font-size: 0.8rem;
+  opacity: 0.8;
+}
+
+.terminalBody {
+  padding: 10px;
+  background: #00150d;
   border-radius: 8px;
-  box-shadow: 0 0 16px #00ff9966;
 }
 
-.profileCard {
-  text-align: center;
-  margin-bottom: 1.5rem;
+.typedOutput {
+  white-space: pre-wrap;
+  font-family: monospace;
+  color: #00ff88;
+  margin-bottom: 20px;
+}
+
+.profileSection {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  flex-wrap: wrap;
 }
 
 .profileImage {
-  width: 120px;
-  height: 120px;
-  border-radius: 50%;
-  border: 2px solid #00ff99;
-  margin-bottom: 1rem;
+  width: 100px;
+  border-radius: 10px;
+  border: 2px solid #00ff88;
 }
 
-.fullName {
+.name {
   font-size: 1.5rem;
-  color: #00ff99;
+  color: #00ff88;
 }
 
 .role {
-  font-size: 1rem;
-  color: #33ffcc;
+  font-weight: bold;
+  font-size: 1.1rem;
 }
 
 .description {
-  font-size: 1rem;
-  line-height: 1.6;
-  margin: 1.5rem 0;
-  background-color: rgba(0, 255, 153, 0.07);
-  padding: 1rem;
-  border-left: 4px solid #00ff99;
-  position: relative;
+  margin-top: 10px;
+  color: #aaffcc;
 }
 
-.prompt {
-  color: #00ff99;
-  font-weight: bold;
-  margin-right: 0.5rem;
-}
-
-.details {
+.grid {
+  margin-top: 20px;
   display: flex;
-  gap: 2rem;
+  gap: 20px;
   flex-wrap: wrap;
-  margin-top: 2rem;
 }
 
-.infoCard {
+.card {
+  background: #001b11;
+  padding: 15px;
+  border-radius: 8px;
+  border: 1px solid #00ff88;
   flex: 1 1 250px;
-  display: flex;
-  align-items: flex-start;
-  gap: 1rem;
-  background-color: rgba(0, 255, 153, 0.05);
-  padding: 1rem;
-  border-left: 3px solid #00ff99;
-  border-radius: 6px;
-  box-shadow: inset 0 0 10px #00ff9966;
+  box-shadow: 0 0 8px #00ff8844;
+  transition: transform 0.2s ease-in-out;
+}
+
+.card:hover {
+  transform: scale(1.03);
 }
 
 .icon {
-  font-size: 1.5rem;
-  color: #00ff99;
-  flex-shrink: 0;
-  margin-top: 4px;
+  font-size: 1.4rem;
+  margin-bottom: 10px;
+  color: #00ff88;
 }
 
-.cardTitle {
-  margin: 0;
-  font-size: 1.1rem;
-  color: #00ffcc;
-}
-
-/* Mobile layout */
 @media (max-width: 768px) {
-  .details {
-    flex-direction: column;
+  .about {
+    padding: 80px 15px;
   }
 
-  .container {
-    padding: 1rem;
+  .profileSection {
+    flex-direction: column;
+    align-items: flex-start;
   }
 
   .profileImage {
-    width: 90px;
-    height: 90px;
+    width: 80px;
+    margin-bottom: 10px;
+  }
+
+  .name {
+    font-size: 1.3rem;
+  }
+
+  .role {
+    font-size: 1rem;
+  }
+
+  .grid {
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  .card {
+    width: 100%;
+    font-size: 0.95rem;
+    padding: 12px;
+  }
+
+  .typedOutput {
+    font-size: 0.9rem;
+  }
+
+  .windowTitle {
+    font-size: 0.7rem;
   }
 }

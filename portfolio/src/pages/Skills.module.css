@@ -1,73 +1,101 @@
-@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono&display=swap');
-
 .skillsSection {
-  height: 100vh;
-  background: transparent;
-  font-family: 'IBM Plex Mono', monospace;
-  scroll-snap-align: start;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  position: relative;
-  z-index: 2;
-}
-
-.skillsContainer {
-  max-width: 1000px;
-  width: 90%;
-  padding: 2rem;
-  border-radius: 12px;
-  backdrop-filter: blur(8px);
-  border: 1px solid rgba(0, 255, 153, 0.1);
-  background: rgba(0, 255, 153, 0.03);
-  box-shadow: 0 10px 30px rgba(0, 255, 153, 0.15);
-  transition: all 0.5s ease-in-out;
-}
-
-.skillsGrid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
-  gap: 1.5rem;
-  margin-top: 1.5rem;
-}
-
-.skillCard {
-  background: rgba(0, 255, 153, 0.05);
-  border: 1px solid rgba(0, 255, 153, 0.2);
+  background-color: #000;
   color: #00ff99;
-  padding: 1rem;
+  min-height: 100vh;
+  padding: 3rem 1rem;
+  font-family: "Courier New", monospace;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.terminalWindow {
+  background: #111;
   border-radius: 8px;
-  text-align: center;
+  box-shadow: 0 0 20px #00ff99;
+  width: 90%;
+  max-width: 700px;
+  overflow: hidden;
+}
+
+.terminalHeader {
+  background: #222;
+  padding: 0.5rem 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
   font-size: 0.9rem;
+  border-bottom: 1px solid #00ff99;
+}
+
+.redDot,
+.yellowDot,
+.greenDot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+.redDot { background-color: #ff5f56; }
+.yellowDot { background-color: #ffbd2e; }
+.greenDot { background-color: #27c93f; }
+
+.title {
+  margin-left: auto;
+  color: #00ff99;
+  font-weight: bold;
+}
+
+.terminalBody {
+  padding: 1rem;
+}
+
+.scanTitle {
+  font-size: 1rem;
+  margin-bottom: 1rem;
+  animation: blinkText 1s steps(2, start) infinite;
+}
+
+.output {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.skillLine {
   opacity: 0;
-  transform: translateY(20px);
-  transition: all 0.3s ease;
+  transform: translateX(-20px);
+  transition: all 0.3s ease-out;
 }
 
-.fadeIn {
+.skillLine.visible {
   opacity: 1;
-  transform: translateY(0);
+  transform: translateX(0);
 }
 
-.icon {
-  font-size: 1.8rem;
-  margin-bottom: 0.5rem;
-  display: block;
-  text-shadow: 0 0 8px #00ff99;
+.skillPrefix {
+  color: #0ff;
+  margin-right: 0.5rem;
 }
 
-.expanded {
-  opacity: 1;
-  transform: scale(1);
-}
-
-.collapsed {
-  opacity: 0;
-  transform: scale(0.95);
+@keyframes blinkText {
+  0% { opacity: 1; }
+  50% { opacity: 0; }
+  100% { opacity: 1; }
 }
 
 @media (max-width: 600px) {
-  .skillsGrid {
-    grid-template-columns: repeat(2, 1fr);
+  .chatForm input {
+    font-size: 0.9rem;
+  }
+
+  .terminalWindow {
+    width: 100%;
+    margin: 0 auto;
+  }
+
+  .terminalBody {
+    padding: 0.75rem;
   }
 }

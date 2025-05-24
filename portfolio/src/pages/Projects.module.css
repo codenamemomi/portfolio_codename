@@ -1,150 +1,179 @@
 .projects {
-  padding: 100px 20px 40px; /* Add extra bottom padding for better spacing */
-  text-align: center;
+  padding-top: 120px;
+  padding-bottom: 80px;
+  scroll-margin-top: 120px;
+  background-color: transparent;
+  color: #00ff00;
+  min-height: 100vh;
+  font-family: 'Courier New', monospace;
+  overflow-x: hidden;
 }
 
 .heading {
-  font-size: 2.5rem;
-  font-weight: bold;
-  margin-bottom: 30px;
+  text-align: center;
+  font-size: 2rem;
+  color: #00ff00;
+  margin-bottom: 2rem;
+  border-bottom: 1px dashed #00ff00;
+  padding-bottom: 0.5rem;
+  animation: glowText 1.5s ease-in-out infinite alternate;
+}
+
+.matrixGrid {
+  display: grid;
+  gap: 1.5rem;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  padding: 0 1rem;
+}
+
+.projectTerminal {
+  background-color: #111;
+  border: 1px solid #00ff00;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 0 8px rgba(0, 255, 0, 0.3);
+  animation: fadeInUp 0.6s ease forwards;
   opacity: 0;
-  transform: translateY(-20px);
-  animation: slideDown 0.5s ease-out forwards;
-  color: white;
-  text-transform: uppercase;
 }
 
-.swiperContainer {
-  width: 100%;
-  padding: 20px 0;
+.projectTerminal:nth-child(1) { animation-delay: 0.1s; }
+.projectTerminal:nth-child(2) { animation-delay: 0.2s; }
+.projectTerminal:nth-child(3) { animation-delay: 0.3s; }
+.projectTerminal:nth-child(4) { animation-delay: 0.4s; }
+
+.projectTerminal:hover {
+  animation: flicker 0.2s infinite alternate;
 }
 
-.projectCard {
-  background: rgba(255, 255, 255, 0.08);
-  border-radius: 12px;
-  padding: 25px;
-  backdrop-filter: blur(15px);
-  box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.2);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  opacity: 0;
-  transform: translateY(30px);
-  animation: slideUp 0.6s ease-out forwards;
+.terminalHeader {
+  display: flex;
+  align-items: center;
+  padding: 0.5rem 1rem;
+  background-color: #0a0a0a;
+  border-bottom: 1px solid #00ff00;
+  gap: 0.5rem;
 }
 
-.projectCard:hover {
-  transform: translateY(-10px);
-  box-shadow: 0px 10px 25px rgba(0, 0, 0, 0.3);
+.greenDot, .yellowDot, .redDot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+}
+
+.greenDot { background-color: #00ff00; }
+.yellowDot { background-color: #ffff00; }
+.redDot { background-color: #ff0000; }
+
+.windowTitle {
+  margin-left: auto;
+  color: #00ff00;
+  font-size: 0.85rem;
+}
+
+.terminalBody {
+  padding: 1rem;
 }
 
 .projectImage {
   width: 100%;
-  border-radius: 10px;
-  transition: transform 0.3s ease, filter 0.3s ease;
-  filter: brightness(0.9);
+  border: 1px solid #00ff00;
+  margin-bottom: 1rem;
+  transition: transform 0.3s;
 }
 
-.projectCard:hover .projectImage {
-  transform: scale(1.05);
-  filter: brightness(1);
+.projectImage:hover {
+  transform: scale(1.02);
+  box-shadow: 0 0 12px #00ff00;
 }
 
-.projectLinks {
+.terminalText {
+  color: #00ff00;
+  font-size: 0.9rem;
+  white-space: pre-wrap;
+  overflow: hidden;
+  border-right: 2px solid #00ff00;
+  animation: typing 3.5s steps(40, end) 1;
+}
+
+.terminalLinks {
   display: flex;
   justify-content: space-between;
-  margin-top: 20px;
+  gap: 1rem;
 }
 
-.liveLink,
-.githubLink {
-  position: relative;
-  display: inline-block;
-  padding: 12px 20px;
-  border-radius: 25px;
-  background: linear-gradient(135deg, #03dac6, #018786); /* Android Accent Color */
-  color: white;
+.linkBtn {
+  flex: 1;
+  background: transparent;
+  border: 1px solid #00ff00;
+  color: #00ff00;
+  text-align: center;
+  padding: 0.5rem;
+  font-size: 0.8rem;
+  transition: background 0.3s, transform 0.2s;
   text-decoration: none;
-  font-weight: bold;
-  transition: all 0.3s ease;
-  box-shadow: 0px 4px 10px rgba(3, 218, 198, 0.3);
+  border-radius: 4px;
 }
 
-.liveLink:hover,
-.githubLink:hover {
-  background: linear-gradient(135deg, #018786, #03dac6);
-  transform: scale(1.08);
-  box-shadow: 0px 6px 15px rgba(3, 218, 198, 0.4);
+.linkBtn:hover {
+  background-color: #00ff0044;
+  transform: translateY(-2px);
+  box-shadow: 0 0 5px #00ff00;
 }
 
-.liveLink::after,
-.githubLink::after {
-  content: "";
-  position: absolute;
-  width: 100px;
-  height: 100px;
-  background: rgba(255, 255, 255, 0.2);
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%) scale(0);
-  border-radius: 50%;
-  opacity: 0;
-  transition: transform 0.4s ease, opacity 0.4s ease;
+/* Animations */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
-.liveLink:active::after,
-.githubLink:active::after {
-  transform: translate(-50%, -50%) scale(1);
-  opacity: 1;
+@keyframes glowText {
+  from {
+    text-shadow: 0 0 5px #00ff00;
+  }
+  to {
+    text-shadow: 0 0 20px #00ff00, 0 0 30px #00ff00;
+  }
 }
 
-.fab {
-  position: fixed;
-  bottom: 20px;
-  right: 20px;
-  background: #03dac6;
-  width: 56px;
-  height: 56px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 50%;
-  box-shadow: 0px 5px 15px rgba(3, 218, 198, 0.3);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+@keyframes typing {
+  from { width: 0; }
+  to { width: 100%; }
 }
 
-.fab:hover {
-  transform: scale(1.1);
-  box-shadow: 0px 8px 20px rgba(3, 218, 198, 0.4);
+@keyframes flicker {
+  0% { opacity: 1; }
+  50% { opacity: 0.8; }
+  100% { opacity: 1; }
 }
 
-@keyframes fadeIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
-}
-
-@keyframes slideUp {
-  from { opacity: 0; transform: translateY(30px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-
-@keyframes slideDown {
-  from { opacity: 0; transform: translateY(-20px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-
+/* Mobile */
 @media (max-width: 768px) {
+  .projects {
+    padding-top: 80px;
+    padding-bottom: 60px;
+  }
+
   .heading {
-    font-size: 2rem;
+    font-size: 1.5rem;
   }
 
-  .projectLinks {
+  .terminalText {
+    font-size: 0.8rem;
+  }
+
+  .linkBtn {
+    padding: 0.4rem;
+    font-size: 0.75rem;
+  }
+
+  .terminalLinks {
     flex-direction: column;
-    align-items: center;
-  }
-
-  .liveLink,
-  .githubLink {
-    width: 80%;
-    text-align: center;
-    margin-bottom: 10px;
   }
 }

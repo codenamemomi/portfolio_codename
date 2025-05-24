@@ -1,103 +1,131 @@
 import { useState } from "react";
 import styles from "./Contact.module.css";
-import { FaUserCircle } from "react-icons/fa";
-import { IoSend } from "react-icons/io5";
 
 const Contact = () => {
   const [step, setStep] = useState(1);
   const [formData, setFormData] = useState({ name: "", email: "", message: "" });
-  const [messages, setMessages] = useState([]);
+  const [messages, setMessages] = useState([
+    { sender: "bot", text: "Welcome to Neo-Terminal v1.0" },
+    { sender: "bot", text: "login: Please enter your name and email to authenticate." }
+  ]);
   const [typing, setTyping] = useState(false);
 
-  const handleChange = (e) => {
+  const handleInput = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const handleSaveContact = (e) => {
+  const handleLogin = (e) => {
     e.preventDefault();
     if (!formData.name.trim() || !formData.email.trim()) return;
+
     setStep(2);
-    setMessages([{ sender: "bot", text: `Hey ${formData.name}! How can I help you today?` }]);
+    setMessages((prev) => [
+      ...prev,
+      { sender: "user", text: `$ login --name ${formData.name} --email ${formData.email}` },
+      { sender: "bot", text: `[${new Date().toLocaleTimeString()}] Authentication successful.` },
+      { sender: "bot", text: "Type 'help' for available commands." }
+    ]);
   };
 
-  const handleSendMessage = async (e) => {
+  const handleCommand = (e) => {
     e.preventDefault();
-    if (!formData.message.trim()) return;
+    const input = formData.message.trim();
+    if (!input) return;
 
-    const userMessage = { sender: "user", text: formData.message };
-    setMessages((prev) => [...prev, userMessage]);
+    const timestamp = new Date().toLocaleTimeString();
+    const userMsg = { sender: "user", text: `$ ${input}` };
+    setMessages((prev) => [...prev, userMsg]);
     setFormData({ ...formData, message: "" });
     setTyping(true);
 
-    try {
-      const response = await fetch("https://form-forums.vercel.app/api/v1/contact", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          name: formData.name,
-          email: formData.email,
-          message: userMessage.text,
-        }),
-      });
+    setTimeout(() => {
+      let response;
 
-      if (response.ok) {
-        setTyping(false);
-        setMessages((prev) => [
-          ...prev,
-          { sender: "bot", text: "Got your message! I'll get back to you soon." },
-        ]);
-      } else {
-        setTyping(false);
-        setMessages((prev) => [
-          ...prev,
-          { sender: "bot", text: "Failed to send. Please try again later." },
-        ]);
+      switch (input.toLowerCase()) {
+        case "whoami":
+          response = `${formData.name} <${formData.email}>`;
+          break;
+        case "email":
+          response = `📧 ${formData.email}`;
+          break;
+        case "connect":
+          response = `🟢 Connected to server. Terminal secure.`;
+          break;
+        case "help":
+          response = `Available commands: whoami, email, connect, clear, help`;
+          break;
+        case "clear":
+          setMessages([]);
+          setTyping(false);
+          return;
+        default:
+          response = `Unknown command: '${input}'. Type 'help' for available commands.`;
+          break;
       }
-    } catch (error) {
-      console.error("Error sending message:", error);
+
       setTyping(false);
       setMessages((prev) => [
         ...prev,
-        { sender: "bot", text: "Error sending message. Please try again." },
+        { sender: "bot", text: `[${timestamp}] ${response}` }
       ]);
-    }
+    }, 800);
   };
 
   return (
     <section className={styles.contact} id="contact">
-      {step === 1 ? (
-        <div className={styles.contactForm}>
-          <h2>New Contact</h2>
-          <FaUserCircle className={styles.avatar} />
-          <p>Enter your details to start chatting.</p>
-          <form onSubmit={handleSaveContact}>
-            <input type="text" name="name" placeholder="Name" required value={formData.name} onChange={handleChange} />
-            <input type="email" name="email" placeholder="Email" required value={formData.email} onChange={handleChange} />
-            <button type="submit">Save & Chat</button>
+      <div className={styles.terminalWindow}>
+        <div className={styles.terminalHeader}>
+          <span className={styles.redDot}></span>
+          <span className={styles.yellowDot}></span>
+          <span className={styles.greenDot}></span>
+          <span className={styles.title}>neo-terminal</span>
+        </div>
+
+        <div className={styles.terminalBody}>
+          {messages.map((msg, index) => (
+            <div key={index} className={styles.line}>
+              <span className={msg.sender === "user" ? styles.prompt : styles.botResponse}>
+                {msg.text}
+              </span>
+            </div>
+          ))}
+          {typing && (
+            <div className={styles.line}>
+              <span className={styles.botResponse}>
+                Booting response<span className={styles.cursor}>|</span>
+              </span>
+            </div>
+          )}
+
+          <form
+            className={styles.chatForm}
+            onSubmit={step === 1 ? handleLogin : handleCommand}
+          >
+            <span className={styles.prompt}>$</span>
+            <input
+              type="text"
+              name={step === 1 ? "name" : "message"}
+              placeholder={step === 1 ? "Enter name" : "Type a command..."}
+              autoComplete="off"
+              required
+              value={step === 1 ? formData.name : formData.message}
+              onChange={handleInput}
+            />
+            {step === 1 && (
+              <input
+                type="email"
+                name="email"
+                placeholder="Enter email"
+                required
+                value={formData.email}
+                onChange={handleInput}
+                className={styles.secondaryInput}
+              />
+            )}
+            <button type="submit" style={{ display: "none" }}>Send</button>
           </form>
         </div>
-      ) : (
-        <div className={styles.chatContainer}>
-          <div className={styles.chatHeader}>
-            <FaUserCircle className={styles.chatAvatar} />
-            <h3>{formData.name}</h3>
-          </div>
-
-          <div className={styles.chatBox}>
-            {messages.map((msg, index) => (
-              <div key={index} className={`${styles.message} ${msg.sender === "user" ? styles.user : styles.bot}`}>
-                <p>{msg.text}</p>
-              </div>
-            ))}
-            {typing && <div className={`${styles.message} ${styles.bot}`}><p>Typing...</p></div>}
-          </div>
-
-          <form className={styles.chatForm} onSubmit={handleSendMessage}>
-            <input type="text" name="message" placeholder="Type a message..." required value={formData.message} onChange={handleChange} />
-            <button type="submit"><IoSend /></button>
-          </form>
-        </div>
-      )}
+      </div>
     </section>
   );
 };

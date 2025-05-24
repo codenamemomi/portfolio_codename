@@ -36,43 +36,36 @@ const projects = [
 const Projects = () => {
   return (
     <section className={styles.projects} id="projects">
-      <h2 className={styles.heading}>My Projects</h2>
-      <Swiper
-        modules={[Navigation, Pagination, Autoplay]}
-        spaceBetween={20}
-        slidesPerView={1}
-        loop={true}
-        autoplay={{ delay: 3000 }}
-        navigation
-        pagination={{ clickable: true }}
-        breakpoints={{
-          768: { slidesPerView: 2 },
-          1024: { slidesPerView: 3 }
-        }}
-        className={styles.swiperContainer}
-      >
+      <h2 className={styles.heading}>/** Projects Dashboard */</h2>
+      <div className={styles.matrixGrid}>
         {projects.map((project, index) => (
-          <SwiperSlide key={index} className={styles.projectCard}>
-            <div className={styles.cardContent}>
+          <div key={index} className={styles.projectTerminal}>
+            <div className={styles.terminalHeader}>
+              <span className={styles.greenDot}></span>
+              <span className={styles.yellowDot}></span>
+              <span className={styles.redDot}></span>
+              <span className={styles.windowTitle}>{project.title}</span>
+            </div>
+            <div className={styles.terminalBody}>
               <img src={project.image} alt={project.title} className={styles.projectImage} />
-              <h3 className={styles.projectTitle}>{project.title}</h3>
-              <p className={styles.projectDescription}>{project.description}</p>
-              <div className={styles.projectLinks}>
-                <a href={project.live} target="_blank" rel="noopener noreferrer" className={styles.liveLink}>
+              <pre className={styles.terminalText}>
+{`> Description:
+  ${project.description}
+
+> Category:
+  ${project.category}`}
+              </pre>
+              <div className={styles.terminalLinks}>
+                <a href={project.live} target="_blank" rel="noopener noreferrer" className={styles.linkBtn}>
                   Live <FaExternalLinkAlt />
                 </a>
-                <a href={project.github} target="_blank" rel="noopener noreferrer" className={styles.githubLink}>
+                <a href={project.github} target="_blank" rel="noopener noreferrer" className={styles.linkBtn}>
                   Code <FaGithub />
                 </a>
               </div>
             </div>
-          </SwiperSlide>
+          </div>
         ))}
-      </Swiper>
-
-      {/* Floating Action Button (FAB) for future actions */}
-      <div className={styles.fab}>
-        <FaGithub />
       </div>
     </section>
   );

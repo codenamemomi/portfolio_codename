@@ -6,6 +6,10 @@
   box-sizing: border-box;
 }
 
+section {
+  padding-top: 70px; 
+}
+
 html, body {
   height: 100%;
   width: 100%;
@@ -77,7 +81,7 @@ body {
 
 @media (max-width: 768px) {
   .main-container {
-    scroll-snap-type: none; /* mobile friendliness */
+    scroll-snap-type: none;
   }
 
   body {

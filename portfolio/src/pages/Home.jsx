@@ -1,6 +1,6 @@
 import Hero from "./Hero";
 import Certificates from "./Certificate";
-import styles from "./Home.module.css"; // Optional CSS module for layout control
+import styles from "./Home.module.css";
 
 const Home = () => {
   return (

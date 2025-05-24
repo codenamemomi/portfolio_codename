@@ -55,7 +55,6 @@
   box-shadow: 0 0 10px #00ff99;
 }
 
-/* Optional blinking cursor effect */
 @keyframes blink {
   50% {
     opacity: 0.2;

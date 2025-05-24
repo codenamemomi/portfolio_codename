@@ -1,241 +1,228 @@
 .contact {
-  position: relative;
-  padding-top: 80px; /* Adjust based on navbar height */
+  padding-top: 100px;
+  padding-bottom: 60px;
   min-height: 100vh;
+  background-color: transparent;
+  color: #00ff00;
+  font-family: 'Courier New', Courier, monospace;
+  overflow-x: hidden;
+  scroll-padding-top: 100px;
+}
+
+.terminalWindow {
+  max-width: 800px;
+  margin: 0 auto;
+  background-color: #0a0a0a;
+  border: 1px solid #00ff00;
+  box-shadow: 0 0 30px #00ff00aa;
+  border-radius: 6px;
   display: flex;
-  justify-content: center;
-  align-items: center;
   flex-direction: column;
-  z-index: 1;
-  background: #121212;
-}
-
-.contactForm {
-  text-align: center;
-  opacity: 0;
-  transform: translateY(20px);
-  animation: fadeIn 0.5s ease-out forwards;
-  width: 90%;
-  max-width: 400px;
-  background: rgba(255, 255, 255, 0.1);
-  padding: 25px;
-  border-radius: 12px;
-  backdrop-filter: blur(10px);
-  box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.2);
-}
-
-.contact h2 {
-  font-size: 2rem;
-  font-weight: bold;
-  color: white;
-  text-transform: uppercase;
-  margin-bottom: 20px;
-  opacity: 0;
-  animation: fadeIn 0.6s ease-out forwards;
-}
-
-.avatar {
-  font-size: 60px;
-  color: #aaa;
-  animation: popIn 0.4s ease-out;
-}
-
-@keyframes popIn {
-  0% {
-    transform: scale(0.8);
-    opacity: 0;
-  }
-  100% {
-    transform: scale(1);
-    opacity: 1;
-  }
-}
-
-.contactForm input,
-.contactForm textarea {
-  width: 100%;
-  padding: 12px;
-  margin: 10px 0;
-  border: none;
-  border-radius: 8px;
-  font-size: 16px;
-  background: #222;
-  color: white;
-  transition: background 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
-  box-shadow: inset 0px 2px 4px rgba(255, 255, 255, 0.1);
-}
-
-.contactForm input:focus,
-.contactForm textarea:focus {
-  background: #333;
-  box-shadow: 0px 0px 8px rgba(3, 218, 198, 0.3);
-}
-
-.contactForm button {
-  width: 100%;
-  padding: 12px;
-  background: linear-gradient(135deg, #03dac6, #018786);
-  color: white;
-  border: none;
-  border-radius: 25px;
-  font-size: 16px;
-  font-weight: bold;
-  cursor: pointer;
-  position: relative;
   overflow: hidden;
-  transition: all 0.3s ease;
-  box-shadow: 0px 4px 10px rgba(3, 218, 198, 0.3);
+  animation: fadeIn 1s ease-out;
 }
 
-.contactForm button:hover {
-  background: linear-gradient(135deg, #018786, #03dac6);
-  transform: scale(1.05);
-  box-shadow: 0px 6px 15px rgba(3, 218, 198, 0.4);
-}
-
-.contactForm button:active::after {
-  content: "";
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  top: 0;
-  left: 0;
-  background: rgba(255, 255, 255, 0.3);
-  animation: ripple 0.4s ease-out;
-}
-
-@keyframes ripple {
-  from {
-    opacity: 1;
-    transform: scale(1);
-  }
-  to {
-    opacity: 0;
-    transform: scale(1.5);
-  }
-}
-
-.chatContainer {
-  width: 90%;
-  max-width: 400px;
-  background: rgba(255, 255, 255, 0.08);
-  color: white;
-  padding: 20px;
-  border-radius: 15px;
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-  backdrop-filter: blur(15px);
-  transform: translateY(50px);
-  opacity: 0;
-  animation: slideUp 0.6s ease-out forwards;
-}
-
-.chatHeader {
+.terminalHeader {
   display: flex;
   align-items: center;
-  gap: 10px;
-  border-bottom: 2px solid #333;
-  padding-bottom: 10px;
-  margin-bottom: 10px;
+  padding: 0.5rem 1rem;
+  background-color: #1a1a1a;
+  border-bottom: 1px solid #00ff00;
 }
 
-.chatBox {
-  max-height: 300px;
+.redDot,
+.yellowDot,
+.greenDot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  margin-right: 0.5rem;
+}
+
+.redDot {
+  background-color: #ff5f56;
+}
+
+.yellowDot {
+  background-color: #ffbd2e;
+}
+
+.greenDot {
+  background-color: #27c93f;
+}
+
+.title {
+  margin-left: auto;
+  color: #00ff00;
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  animation: flicker 3s infinite;
+}
+
+.terminalBody {
+  flex: 1;
+  padding: 1rem;
+  height: 500px;
   overflow-y: auto;
+  background-color: #000000;
   display: flex;
   flex-direction: column;
-  gap: 10px;
-  padding: 10px;
 }
 
-.message {
-  padding: 12px;
-  border-radius: 12px;
-  max-width: 75%;
-  font-size: 0.9rem;
+.line {
+  display: flex;
+  white-space: pre-wrap;
+  word-break: break-word;
+  margin-bottom: 0.5rem;
+  opacity: 0;
+  animation: slideIn 0.4s forwards;
 }
 
-.user {
-  background: #03dac6;
-  align-self: flex-end;
-  color: black;
+.line:nth-child(even) {
+  animation-delay: 0.1s;
+}
+
+.prompt {
+  color: #00ff00;
   font-weight: bold;
+  margin-right: 0.5rem;
 }
 
-.bot {
-  background: #222;
-  align-self: flex-start;
+.botResponse {
+  color: #00ff00;
+  font-style: italic;
+}
+
+.cursor {
+  display: inline-block;
+  width: 10px;
+  height: 1.1em;
+  background-color: #00ff00;
+  margin-left: 4px;
+  animation: blink 1s step-start infinite;
 }
 
 .chatForm {
   display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
   align-items: center;
-  gap: 10px;
-  margin-top: 10px;
+  padding: 0.75rem 1rem;
+  border-top: 1px solid #00ff00;
+  background-color: #111111;
+  animation: fadeInUp 0.8s ease-in;
 }
 
-.chatForm input {
+.chatForm input[type="text"],
+.chatForm input[type="email"] {
   flex: 1;
-  padding: 10px;
-  border-radius: 25px;
-  border: none;
-  background: #222;
-  color: white;
-  transition: background 0.3s ease-in-out;
+  min-width: 180px;
+  background-color: #0d0d0d;
+  border: 1px solid #00ff00;
+  color: #00ff00;
+  padding: 0.6rem;
+  border-radius: 4px;
+  font-family: inherit;
+  font-size: 1rem;
+  transition: background 0.3s ease;
+}
+
+.chatForm input::placeholder {
+  color: #00ff0070;
 }
 
 .chatForm input:focus {
-  background: #333;
+  background-color: #001100;
+  outline: none;
 }
 
-.chatForm button {
-  background: #03dac6;
-  border: none;
-  padding: 10px 14px;
-  border-radius: 50%;
-  color: black;
-  font-weight: bold;
-  cursor: pointer;
-  transition: transform 0.2s ease-in-out;
-  box-shadow: 0px 3px 8px rgba(3, 218, 198, 0.3);
+.secondaryInput {
+  margin-top: 0.5rem;
 }
 
-.chatForm button:hover {
-  transform: scale(1.1);
-  box-shadow: 0px 5px 12px rgba(3, 218, 198, 0.4);
+.terminalBody::-webkit-scrollbar {
+  width: 8px;
 }
 
-.chatForm button:active {
-  transform: scale(0.9);
+.terminalBody::-webkit-scrollbar-track {
+  background: #111;
+}
+
+.terminalBody::-webkit-scrollbar-thumb {
+  background-color: #00ff00;
+  border-radius: 4px;
 }
 
 @keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+  from { opacity: 0; transform: scale(0.97); }
+  to { opacity: 1; transform: scale(1); }
 }
 
-@keyframes slideUp {
-  from {
-    transform: translateY(50px);
-    opacity: 0;
-  }
-  to {
-    transform: translateY(0);
-    opacity: 1;
-  }
+@keyframes slideIn {
+  from { opacity: 0; transform: translateX(-10px); }
+  to { opacity: 1; transform: translateX(0); }
 }
 
-@media (max-width: 768px) {
-  .contact h2 {
-    font-size: 1.8rem;
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+@keyframes flicker {
+  0%, 19%, 21%, 23%, 25%, 54%, 56%, 100% { opacity: 1; }
+  20%, 24%, 55% { opacity: 0.4; }
+}
+
+@media (max-width: 600px) {
+  .contact {
+    padding: 2rem 1rem;
   }
 
-  .chatContainer {
-    max-width: 100%;
+  .terminalWindow {
+    width: 100%;
+    box-shadow: 0 0 20px #00ff00aa;
+  }
+
+  .terminalHeader {
+    padding: 0.4rem 0.75rem;
+  }
+
+  .title {
+    font-size: 0.75rem;
+  }
+
+  .terminalBody {
+    padding: 0.75rem;
+    height: 400px;
+  }
+
+  .chatForm {
+    flex-direction: column;
+    padding: 0.75rem;
+  }
+
+  .chatForm input[type="text"],
+  .chatForm input[type="email"] {
+    font-size: 0.9rem;
+    width: 100%;
+  }
+
+  .cursor {
+    height: 1em;
+    width: 8px;
+  }
+
+  .prompt {
+    font-size: 0.95rem;
+  }
+
+  .line {
+    font-size: 0.95rem;
   }
 }

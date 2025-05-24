@@ -5,7 +5,7 @@ const MatrixRain = ({
   fontSize = 16,
   fadeSpeed = 0.1,
   alpha = 0.2,
-  cycleSpeed = 0.002, // how fast colors shift
+  cycleSpeed = 0.002,
 }) => {
   const canvasRef = useRef(null);
 
@@ -19,14 +19,12 @@ const MatrixRain = ({
     let drops = Array(columns).fill(1);
 
     const charArray = characters.split("");
-    let hue = 140; // start from greenish
+    let hue = 140;
 
     const draw = () => {
-      // Darken the previous frame (fade effect)
       ctx.fillStyle = `rgba(0, 0, 0, ${fadeSpeed})`;
       ctx.fillRect(0, 0, width, height);
 
-      // Cycle hue for color shift effect
       hue += cycleSpeed * 360;
       if (hue > 360) hue = 0;
       const currentColor = `hsla(${hue}, 100%, 60%, ${alpha})`;

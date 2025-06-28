@@ -37,6 +37,13 @@
   animation: blink 2s infinite step-start;
 }
 
+.ctaGroup {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  justify-content: center;
+}
+
 .cta {
   display: inline-block;
   padding: 0.75rem 1.5rem;
@@ -58,5 +65,24 @@
 @keyframes blink {
   50% {
     opacity: 0.2;
+  }
+}
+
+@media (max-width: 768px) {
+ .heroCard {
+    padding: 1.5rem;
+  }
+
+ .title {
+    font-size: 2rem;
+  }
+
+ .subtitle {
+    font-size: 1rem;
+  }
+
+ .cta {
+    padding: 0.5rem 1rem;
+    font-size: 0.8rem;
   }
 }

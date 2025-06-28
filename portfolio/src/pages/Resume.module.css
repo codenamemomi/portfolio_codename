@@ -28,19 +28,17 @@
 }
 
 .viewerWrapper {
-  position: relative;
-  overflow: hidden;
-  padding-top: 56.25%;
-  margin-bottom: 1rem;
+  padding: 1rem;
+  background-color: #222;
+  border-radius: 5px;
+  overflow-y: auto;
+  max-height: 500px;
 }
 
 .resumeViewer {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  border: none;
+  font-family: monospace;
+  font-size: 0.9rem;
+  white-space: pre-wrap;
 }
 
 .buttonGroup {
@@ -50,7 +48,6 @@
   justify-content: center;
 }
 
-.fullScreenBtn,
 .downloadBtn {
   background: transparent;
   border: 1px solid #00ff00;
@@ -64,32 +61,32 @@
   transition: background 0.3s;
 }
 
-.fullScreenBtn:hover,
 .downloadBtn:hover {
   background-color: #00ff0044;
 }
 
 @media (max-width: 768px) {
-  .resumeSection {
+.resumeSection {
     padding-top: 80px;
     padding-bottom: 60px;
   }
 
-  .resumeCard {
+.resumeCard {
     padding: 1rem;
   }
 
-  .heading {
+.heading {
     font-size: 1.5rem;
   }
 
-  .buttonGroup {
+.buttonGroup {
     flex-direction: column;
+    align-items: center;
   }
 
-  .fullScreenBtn,
-  .downloadBtn {
+.downloadBtn {
     font-size: 0.8rem;
     padding: 0.5rem;
+    margin-bottom: 0.5rem;
   }
 }

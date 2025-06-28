@@ -21,6 +21,9 @@
   display: flex;
   flex-direction: column;
   overflow: hidden;
+  -webkit-animation: fadeIn 1s ease-out;
+  -moz-animation: fadeIn 1s ease-out;
+  -o-animation: fadeIn 1s ease-out;
   animation: fadeIn 1s ease-out;
 }
 
@@ -59,6 +62,9 @@
   font-size: 0.85rem;
   text-transform: uppercase;
   letter-spacing: 1px;
+  -webkit-animation: flicker 3s infinite;
+  -moz-animation: flicker 3s infinite;
+  -o-animation: flicker 3s infinite;
   animation: flicker 3s infinite;
 }
 
@@ -78,10 +84,16 @@
   word-break: break-word;
   margin-bottom: 0.5rem;
   opacity: 0;
+  -webkit-animation: slideIn 0.4s forwards;
+  -moz-animation: slideIn 0.4s forwards;
+  -o-animation: slideIn 0.4s forwards;
   animation: slideIn 0.4s forwards;
 }
 
 .line:nth-child(even) {
+  -webkit-animation-delay: 0.1s;
+  -moz-animation-delay: 0.1s;
+  -o-animation-delay: 0.1s;
   animation-delay: 0.1s;
 }
 
@@ -102,6 +114,9 @@
   height: 1.1em;
   background-color: #00ff00;
   margin-left: 4px;
+  -webkit-animation: blink 1s step-start infinite;
+  -moz-animation: blink 1s step-start infinite;
+  -o-animation: blink 1s step-start infinite;
   animation: blink 1s step-start infinite;
 }
 
@@ -113,6 +128,9 @@
   padding: 0.75rem 1rem;
   border-top: 1px solid #00ff00;
   background-color: #111111;
+  -webkit-animation: fadeInUp 0.8s ease-in;
+  -moz-animation: fadeInUp 0.8s ease-in;
+  -o-animation: fadeInUp 0.8s ease-in;
   animation: fadeInUp 0.8s ease-in;
 }
 
@@ -156,9 +174,39 @@
   border-radius: 4px;
 }
 
+@-webkit-keyframes fadeIn {
+  from { opacity: 0; transform: scale(0.97); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+@-moz-keyframes fadeIn {
+  from { opacity: 0; transform: scale(0.97); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+@-o-keyframes fadeIn {
+  from { opacity: 0; transform: scale(0.97); }
+  to { opacity: 1; transform: scale(1); }
+}
+
 @keyframes fadeIn {
   from { opacity: 0; transform: scale(0.97); }
   to { opacity: 1; transform: scale(1); }
+}
+
+@-webkit-keyframes slideIn {
+  from { opacity: 0; transform: translateX(-10px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+@-moz-keyframes slideIn {
+  from { opacity: 0; transform: translateX(-10px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+@-o-keyframes slideIn {
+  from { opacity: 0; transform: translateX(-10px); }
+  to { opacity: 1; transform: translateX(0); }
 }
 
 @keyframes slideIn {
@@ -166,14 +214,59 @@
   to { opacity: 1; transform: translateX(0); }
 }
 
+@-webkit-keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@-moz-keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@-o-keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
 @keyframes fadeInUp {
   from { opacity: 0; transform: translateY(20px); }
   to { opacity: 1; transform: translateY(0); }
 }
 
+@-webkit-keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+@-moz-keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+@-o-keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
 @keyframes blink {
   0%, 100% { opacity: 1; }
   50% { opacity: 0; }
+}
+
+@-webkit-keyframes flicker {
+  0%, 19%, 21%, 23%, 25%, 54%, 56%, 100% { opacity: 1; }
+  20%, 24%, 55% { opacity: 0.4; }
+}
+
+@-moz-keyframes flicker {
+  0%, 19%, 21%, 23%, 25%, 54%, 56%, 100% { opacity: 1; }
+  20%, 24%, 55% { opacity: 0.4; }
+}
+
+@-o-keyframes flicker {
+   0%, 19%, 21%, 23%, 25%, 54%, 56%, 100% { opacity: 1; }
+  20%, 24%, 55% { opacity: 0.4; }
 }
 
 @keyframes flicker {
@@ -182,50 +275,50 @@
 }
 
 @media (max-width: 600px) {
-  .contact {
+ .contact {
     padding: 2rem 1rem;
     padding-top: 100px
   }
 
-  .terminalWindow {
+ .terminalWindow {
     width: 100%;
     box-shadow: 0 0 20px #00ff00aa;
   }
 
-  .terminalHeader {
+ .terminalHeader {
     padding: 0.4rem 0.75rem;
   }
 
-  .title {
+ .title {
     font-size: 0.75rem;
   }
 
-  .terminalBody {
+ .terminalBody {
     padding: 0.75rem;
     height: 400px;
   }
 
-  .chatForm {
+ .chatForm {
     flex-direction: column;
     padding: 0.75rem;
   }
 
-  .chatForm input[type="text"],
-  .chatForm input[type="email"] {
+ .chatForm input[type="text"],
+ .chatForm input[type="email"] {
     font-size: 0.9rem;
     width: 100%;
   }
 
-  .cursor {
+ .cursor {
     height: 1em;
     width: 8px;
   }
 
-  .prompt {
+ .prompt {
     font-size: 0.95rem;
   }
 
-  .line {
+ .line {
     font-size: 0.95rem;
   }
 }

@@ -63,6 +63,13 @@
   gap: 0.5rem;
 }
 
+.categoryTitle {
+  font-size: 1.2rem;
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+  color: #00ff99;
+}
+
 .skillLine {
   opacity: 0;
   transform: translateX(-20px);
@@ -86,16 +93,12 @@
 }
 
 @media (max-width: 600px) {
-  .chatForm input {
-    font-size: 0.9rem;
-  }
-
-  .terminalWindow {
+ .terminalWindow {
     width: 100%;
     margin: 0 auto;
   }
 
-  .terminalBody {
+ .terminalBody {
     padding: 0.75rem;
   }
 }

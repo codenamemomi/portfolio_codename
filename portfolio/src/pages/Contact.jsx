@@ -11,16 +11,25 @@ const Contact = () => {
   const [typing, setTyping] = useState(false);
 
   const handleInput = (e) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
+    setFormData({...formData, [e.target.name]: e.target.value });
   };
 
   const handleLogin = (e) => {
     e.preventDefault();
-    if (!formData.name.trim() || !formData.email.trim()) return;
+    if (!formData.name.trim() ||!formData.email.trim()) return;
+
+    const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+    if (!emailRegex.test(formData.email)) {
+      setMessages((prev) => [
+       ...prev,
+        { sender: "bot", text: "Invalid email address." }
+      ]);
+      return;
+    }
 
     setStep(2);
     setMessages((prev) => [
-      ...prev,
+     ...prev,
       { sender: "user", text: `$ login --name ${formData.name} --email ${formData.email}` },
       { sender: "bot", text: `[${new Date().toLocaleTimeString()}] Authentication successful.` },
       { sender: "bot", text: "Type 'help' for available commands." }
@@ -35,7 +44,7 @@ const Contact = () => {
     const timestamp = new Date().toLocaleTimeString();
     const userMsg = { sender: "user", text: `$ ${input}` };
     setMessages((prev) => [...prev, userMsg]);
-    setFormData({ ...formData, message: "" });
+    setFormData({...formData, message: "" });
     setTyping(true);
 
     setTimeout(() => {
@@ -65,7 +74,7 @@ const Contact = () => {
 
       setTyping(false);
       setMessages((prev) => [
-        ...prev,
+       ...prev,
         { sender: "bot", text: `[${timestamp}] ${response}` }
       ]);
     }, 800);
@@ -84,7 +93,7 @@ const Contact = () => {
         <div className={styles.terminalBody}>
           {messages.map((msg, index) => (
             <div key={index} className={styles.line}>
-              <span className={msg.sender === "user" ? styles.prompt : styles.botResponse}>
+              <span className={msg.sender === "user"? styles.prompt : styles.botResponse}>
                 {msg.text}
               </span>
             </div>
@@ -99,16 +108,16 @@ const Contact = () => {
 
           <form
             className={styles.chatForm}
-            onSubmit={step === 1 ? handleLogin : handleCommand}
+            onSubmit={step === 1? handleLogin : handleCommand}
           >
             <span className={styles.prompt}>$</span>
             <input
               type="text"
-              name={step === 1 ? "name" : "message"}
-              placeholder={step === 1 ? "Enter name" : "Type a command..."}
+              name={step === 1? "name" : "message"}
+              placeholder={step === 1? "Enter name" : "Type a command..."}
               autoComplete="off"
               required
-              value={step === 1 ? formData.name : formData.message}
+              value={step === 1? formData.name : formData.message}
               onChange={handleInput}
             />
             {step === 1 && (

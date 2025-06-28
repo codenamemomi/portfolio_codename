@@ -54,7 +54,7 @@
   gap: 0.5rem;
 }
 
-.greenDot, .yellowDot, .redDot {
+.greenDot,.yellowDot,.redDot {
   width: 10px;
   height: 10px;
   border-radius: 50%;
@@ -155,25 +155,25 @@
 
 /* Mobile */
 @media (max-width: 768px) {
-  .projects {
+ .projects {
     padding-top: 80px;
     padding-bottom: 60px;
   }
 
-  .heading {
+.heading {
     font-size: 1.5rem;
   }
 
-  .terminalText {
+.terminalText {
     font-size: 0.8rem;
   }
 
-  .linkBtn {
+.linkBtn {
     padding: 0.4rem;
     font-size: 0.75rem;
   }
 
-  .terminalLinks {
+.terminalLinks {
     flex-direction: column;
   }
 }
